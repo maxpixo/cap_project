@@ -1,0 +1,5 @@
+# Ignore the 'config' folder
+config/
+
+# Ignore the 'venv' folder (virtual environment)
+cap_project_env/
