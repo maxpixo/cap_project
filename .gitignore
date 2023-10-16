@@ -1,5 +1,14 @@
-# Ignore the 'config' folder
-config/
-
 # Ignore the 'venv' folder (virtual environment)
 .venv/
+
+# Ignore the 'con' folder
+con/
+
+
+# Ignore the '__pycache__' folder
+__pycache__/
+
+# Ignore the 'vscode' folder
+.vscode/
+
+app_config.py
