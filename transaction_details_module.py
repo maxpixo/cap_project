@@ -72,6 +72,7 @@ def display_transactions_by_zip():
             print(Style.RESET_ALL)
         else:
             print(Fore.RED + "No transactions found for the specified criteria.")
+            print(Style.RESET_ALL)
 
     except mysql.connector.Error as err:
         print(f"Error: {err}")
