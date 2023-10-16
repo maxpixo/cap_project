@@ -126,6 +126,7 @@ def api_analysis_module_menu():
 def main_menu():
     while True:
         print(Fore.GREEN + "Main Menu:")
+        print(Style.RESET_ALL)
         print("1. Transaction Details Module")
         print("2. Customer Details Module")
         print("3. Data Analysis and Visualization")

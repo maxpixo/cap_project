@@ -34,7 +34,7 @@ def save_df_mysql(df, table_name):
     
 
 
-# Load data from API   get_loan_data_as_dataframe
+# Load data from API
 def get_loan_data_as_dataframe(sp):
     
 
@@ -46,15 +46,13 @@ def get_loan_data_as_dataframe(sp):
         # Convert the JSON response to a Python dictionary
         data_dict = json.loads(response.text)
 
-        # Create a Spark session
-        #spark = SparkSession.builder.appName("MyApp").getOrCreate()
 
         # Create a Spark DataFrame from the JSON data
         loan_df = sp.createDataFrame(data_dict)
 
         return loan_df
     else:
-        # Handle other status codes as needed
+        # Handle Status Code errors
         print(f"Error: Status Code {response.status_code}")
         return None
 

@@ -133,16 +133,20 @@ def modify_account_details():
 ############################-- Generate monthly bill --############################
 def generate_monthly_bill():
 
+    # Input credit card information
     credit_card_no = input("Enter Credit Card Number: ")
     month = input("Enter Month (MM): ")
     year = input("Enter Year (YYYY): ")
 
+    # Display a loading bar
     progress(50, "LOADING...")
 
     try:
+        # Connect to the database
         conn = connect_to_database()
         cursor = conn.cursor()
 
+        # SQL query to calculate the total bill for the specified month and year
         query = f"SELECT SUM(TRANSACTION_VALUE) FROM CDW_SAPP_CREDIT_CARD WHERE CUST_CC_NO = {credit_card_no} AND " \
                 f"YEAR(TIMEID) = {year} AND MONTH(TIMEID) = {month}"
 
@@ -150,18 +154,22 @@ def generate_monthly_bill():
         result = cursor.fetchone()
 
         if result and result[0]:
+            # Print the total bill if transactions are found
             print(Fore.GREEN + f"Total bill for {month}/{year}: ${result[0]}")
             print(Style.RESET_ALL)
         else:
+            # Print a message if no transactions are found
             print(Fore.RED + "No transactions found for the specified month and year")
             print(Style.RESET_ALL)
 
     except mysql.connector.Error as e:
+        # Handle database errors
         print(Fore.CYAN + f"Error: {e}")
         print(Style.RESET_ALL)
         return None
 
     finally:
+        # Close the cursor and connection
         cursor.close()
         conn.close()
 
@@ -172,16 +180,20 @@ def generate_monthly_bill():
 ############################-- Display transactions --############################
 def display_transactions():
 
+    # Input customer information
     customer_ssn = input("Enter Customer SSN: ")
     start_date = input("Enter Start Date (YYYYMMDD): ")
     end_date = input("Enter End Date (YYYYMMDD): ")
 
+    # Display a loading bar
     progress(50, "LOADING...")
 
     try:
+        # Connect to the database
         conn = connect_to_database()
         cursor = conn.cursor()
 
+        # SQL query to fetch transactions
         query = f"SELECT * FROM CDW_SAPP_CREDIT_CARD WHERE CUST_SSN = {customer_ssn} " \
                 f"AND TIMEID BETWEEN {start_date} AND {end_date} ORDER BY TIMEID DESC"
 
@@ -192,6 +204,7 @@ def display_transactions():
             return "No transactions found within the specified date range"
 
         formatted_results = []
+        # Format and store transaction results
         for result in results:
             card_number, time_id, cust_ssn, branch_code, transaction_type, transaction_value, transaction_id = result
 
@@ -207,10 +220,12 @@ def display_transactions():
             formatted_results.append(formatted_result)
 
         if formatted_results == "No transactions found within the specified date range":
+            # Print message if no transactions found
             print(Fore.GREEN + formatted_results)
             print(Style.RESET_ALL)
         else:
             for transaction in formatted_results:
+                # Print transaction details
                 print(Fore.BLACK + "Transaction Details:")
                 
                 for key, value in transaction.items():
@@ -221,9 +236,11 @@ def display_transactions():
                 print(Style.RESET_ALL)
 
     except mysql.connector.Error as e:
+        # Handle database errors
         print(Fore.CYAN + f"Error: {e}")
 
     finally:
+        # Close the cursor and connection
         cursor.close()
         conn.close()
 

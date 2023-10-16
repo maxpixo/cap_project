@@ -67,11 +67,10 @@ def percentage_approved_for_self_employedV2():
 
 ############################-- percentage rejection for married males --############################
 def percentage_rejection_for_married_malesV2():
-    # Connect to the MySQL database
-
-   
+    
 
     try:
+        # Connect to the MySQL database
         conn = connect_to_database()
         cursor = conn.cursor()
         
@@ -115,10 +114,10 @@ def percentage_rejection_for_married_malesV2():
 
 ############################-- percentage rejection for married males --############################
 def top_three_months_with_largest_volumeV2():
-    # Connect to the MySQL database
     
 
     try:
+        # Connect to the MySQL database
         conn = connect_to_database()
         cursor = conn.cursor()
         
@@ -180,6 +179,7 @@ def branch_with_highest_healthcare_valueV3():
     # Connect to the MySQL database
 
     try:
+        # Connect to the MySQL database
         conn = connect_to_database()
         cursor = conn.cursor()
 

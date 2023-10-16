@@ -25,7 +25,7 @@ def mysql_connect():
     return conn
 
 
-##Task 1: Find and plot which transaction type has the highest transaction count.---------------------------------------
+##Task 1: Find and plot which transaction type has the highest transaction count.
 def find_highest_transaction_count():
 
     conn = connect_to_database()
@@ -66,7 +66,7 @@ def find_highest_transaction_count():
 
 
 
-# Task 2: Find and plot which state has a high number of customers.---------------------------------------
+# Task 2: Find and plot which state has a high number of customers.
 def find_state_with_high_customers():
 
     conn = connect_to_database()
@@ -95,7 +95,7 @@ def find_state_with_high_customers():
     plt.show()
 
 
-# Task 3: Find and plot the sum of all transactions for the top 10 customers.---------------------------------------
+# Task 3: Find and plot the sum of all transactions for the top 10 customers.
 def find_top_10_customers():
 
     conn = connect_to_database()

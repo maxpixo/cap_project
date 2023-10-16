@@ -1,6 +1,5 @@
 
 import os
-import time
 from time import sleep
 from tqdm import tqdm
 import etl
@@ -13,7 +12,7 @@ from colorama import Fore, Style
 # Progress Bar
 def progress(r, msg):
     for item in tqdm(range(r), desc=msg, colour="green"):
-        sleep(0.1)
+        sleep(0.05)
 
 
 def clear_screen():
@@ -26,8 +25,7 @@ if __name__ == "__main__":
    
     etl.etl_etl()
 
-    # Sleep for 5 seconds
-    #time.sleep(5)
+    # Show Progress Bar
     progress(50, "Loading...")
 
     
@@ -43,19 +41,5 @@ if __name__ == "__main__":
     print(Style.RESET_ALL)
     menu.main_menu()
     
-
-    
-    
-
-   
-    
-
-    
-
-
-    
-
-    
-
 
     
