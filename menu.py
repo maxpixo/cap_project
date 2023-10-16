@@ -1,6 +1,7 @@
 from util.mysql_connect import connect_to_database
 import customer_details_module 
 import data_analysis
+from colorama import Fore,Style
 import transaction_details_module
 import api_analysis
 
@@ -124,7 +125,7 @@ def api_analysis_module_menu():
 
 def main_menu():
     while True:
-        print("Main Menu:")
+        print(Fore.GREEN + "Main Menu:")
         print("1. Transaction Details Module")
         print("2. Customer Details Module")
         print("3. Data Analysis and Visualization")
@@ -148,7 +149,3 @@ def main_menu():
             print("Invalid choice. Please try again.")
 
 
-"""
-if __name__ == "__main__":
-    main_menu()
-"""
