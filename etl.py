@@ -3,7 +3,7 @@ findspark.init("/Users/max/Drive/spark")
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, regexp_replace, concat_ws, lower, initcap, when, concat, year, month, dayofmonth, lpad, to_date
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType, TimestampType
-from app_config import db_config,urls
+from app_config import db_config,urls,files_name
 import requests
 import json
 from tqdm import tqdm
@@ -147,9 +147,9 @@ def transform_data_api(raw_data):
 def etl_etl():
 
     #EXTRACT  ###
-    df_branch = spark.read.json("/Users/max/Drive/VS_Projects/cap_project/data/cdw_sapp_branch.json")
-    df_customer = spark.read.json("/Users/max/Drive/VS_Projects/cap_project/data/cdw_sapp_custmer.json")
-    df_credit = spark.read.json("/Users/max/Drive/VS_Projects/cap_project/data/cdw_sapp_credit.json")
+    df_branch = spark.read.json(files_name["branch_file"])
+    df_customer = spark.read.json(files_name["customer_file"])
+    df_credit = spark.read.json(files_name["credit_file"])
     df_loan_api = get_loan_data_as_dataframe(spark)
     
     progress(50, "DATA EXTRACTING...")
