@@ -8,7 +8,7 @@ from time import sleep
 
 def progress(r, msg):
     for item in tqdm(range(r), desc=msg, colour="green"):
-        sleep(0.1)
+        sleep(0.05)
 
 
 # Convert the original date format (YYYYMMDD) to a datetime object

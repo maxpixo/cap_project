@@ -2,7 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import mysql
 import mysql.connector
-import seaborn as sns
 import os
 from util.mysql_connect import connect_to_database
 from colorama import Fore, Style

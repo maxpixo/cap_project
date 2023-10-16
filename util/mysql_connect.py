@@ -1,7 +1,4 @@
 import mysql.connector
-import sys
-sys.path.append('/Users/max/Drive/VS_Projects/cap_project/con')
-#from config import db_config
 from app_config import db_config
 
 
