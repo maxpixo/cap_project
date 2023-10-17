@@ -1,7 +1,7 @@
 import findspark
 findspark.init("/Users/max/Drive/spark")
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, regexp_replace, concat_ws, lower, initcap, when, concat, year, month, dayofmonth, lpad, to_date
+from pyspark.sql.functions import date_format, col, regexp_replace, concat_ws, lower, initcap, when, concat, year, month, dayofmonth, lpad, to_date
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType, TimestampType
 from app_config import db_config,urls,files_name
 import requests
@@ -107,11 +107,13 @@ def transform_data_credit(raw_data):
 
     transformed_data = raw_data.select(
         col("CREDIT_CARD_NO").cast(StringType()).alias("CUST_CC_NO"),
-        concat(
-            year(to_date(concat_ws("-", col("YEAR"), col("MONTH"), col("DAY")), "yyyy-MM-dd")),
-            lpad(month(to_date(concat_ws("-", col("YEAR"), col("MONTH"), col("DAY")), "yyyy-MM-dd")), 2, "0"),
-            lpad(dayofmonth(to_date(concat_ws("-", col("YEAR"), col("MONTH"), col("DAY")), "yyyy-MM-dd")), 2, "0")
-        ).cast(StringType()).alias("TIMEID"),
+        date_format(
+            to_date(
+                concat_ws("-", col("YEAR"), col("MONTH"), col("DAY")),
+                "yyyy-MM-dd"
+            ),
+            "yyyyMMdd"
+        ).cast("string").alias("TIMEID"),
         col("CUST_SSN").cast(IntegerType()).alias("CUST_SSN"),
         col("BRANCH_CODE").cast(IntegerType()).alias("BRANCH_CODE"),
         col("TRANSACTION_TYPE").cast(StringType()).alias("TRANSACTION_TYPE"),
@@ -120,6 +122,9 @@ def transform_data_credit(raw_data):
     )
 
     return transformed_data
+
+
+
 
 ###   Transform loan api   ###
 def transform_data_api(raw_data):

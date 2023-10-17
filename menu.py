@@ -7,7 +7,8 @@ import api_analysis
 
 def transaction_details_module_menu():
     while True:
-        print("Transaction Details Module")
+        print(Fore.BLACK + "Transaction Details Module")
+        print(Style.RESET_ALL)
         print("1. Display transactions by zip code and month/year")
         print("2. Display number and total values of transactions by type")
         print("3. Display total number and total values of transactions by state")
@@ -34,7 +35,8 @@ def transaction_details_module_menu():
 
 def customer_details_module_menu():
     while True:
-        print("Customer Details Module")
+        print(Fore.BLACK + "Customer Details Module")
+        print(Style.RESET_ALL)
         print("1. Check existing account details")
         print("2. Modify account details")
         print("3. Generate monthly bill")
@@ -66,7 +68,8 @@ def customer_details_module_menu():
 
 def data_analysis_module_menu():
     while True:
-        print("Data Analysis and Visualization")
+        print(Fore.BLACK + "Data Analysis and Visualization")
+        print(Style.RESET_ALL)
         print("1. Find and plot highest transaction count by type")
         print("2. Find and plot state with a high number of customers")
         print("3. Find and plot total transactions for top 10 customers")
@@ -93,7 +96,8 @@ def data_analysis_module_menu():
 
 def api_analysis_module_menu():
     while True:
-        print("API Analysis Module")
+        print(Fore.BLACK + "API Analysis Module")
+        print(Style.RESET_ALL)
         print("1. Find and plot percentage of approved applications for self-employed")
         print("2. Find percentage of rejection for married male applicants")
         print("3. Find and plot top three months with the largest transaction volume")
